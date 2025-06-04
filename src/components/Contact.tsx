@@ -1,5 +1,5 @@
-
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [isTransmitting, setIsTransmitting] = useState(false);
@@ -12,13 +12,26 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsTransmitting(true);
-    
-    // Simulate transmission
-    setTimeout(() => {
+
+    emailjs.send(
+      'service_f321mo7',
+      'template_f7iskbn',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      'QCqx1sA8ZLfQbymG01Pi1'
+    )
+    .then(() => {
       setIsTransmitting(false);
       setFormData({ name: '', email: '', message: '' });
-      // Here you would typically send the form data
-    }, 3000);
+      alert('Mensagem enviada com sucesso!');
+    })
+    .catch(() => {
+      setIsTransmitting(false);
+      alert('Erro ao enviar mensagem. Tente novamente.');
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

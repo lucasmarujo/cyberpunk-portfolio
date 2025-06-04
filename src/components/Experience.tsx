@@ -6,7 +6,7 @@ interface ExperienceItem {
   period: string;
   implants: string[];
   description: string;
-  reputation: number;
+  location: string;
 }
 
 const Experience = () => {
@@ -17,26 +17,26 @@ const Experience = () => {
       position: 'JUNIOR FULLSTACK DEVELOPER',
       period: 'ABR 2025 - PRESENTE',
       implants: ['Python', 'Django', 'MySQL', 'Docker', 'React.js', 'TypeScript', 'Next.js', 'Tailwind CSS'],
-      description: 'Lidero equipe de desenvolvimento frontend em projetos de alta complexidade. Implemento arquiteturas escaláveis e otimizo performance para milhões de usuários.',
-      reputation: 95
+      description: 'Ajudo na realização de tarefas e no desenvolvimento do sistema interno da empresa utilizando as tecnologias Python e Django. Fui responsável por realizar um feito de migração de tecnologias, passando a implementar React como framework de Frontend para o sistema. Também realizando a criação de automações em Python.',
+      location: "Itupeva, SP"
     },
     {
       id: '002',
-      company: 'NEURAL DYNAMICS INC',
-      position: 'FULLSTACK DEVELOPER',
-      period: '2020 - 2022',
-      implants: ['Vue.js', 'Node.js', 'MongoDB', 'AWS'],
-      description: 'Desenvolvimento de aplicações web completas com foco em experiência do usuário e performance. Integração de APIs e sistemas de terceiros.',
-      reputation: 87
+      company: 'GAG RECICLAGEM DE ELETRÔNICOS',
+      position: 'TÉCNICO DE MANUTENÇÃO EM ELETRÔNICA',
+      period: 'SET 2023 - SET 2024',
+      implants: ['Manutenção Avançada de Hardware'],
+      description: 'Responsável por cadastrar produtos no sistema, testar e manter hardware (notebooks, celulares, servidores e dispositivos de rede), colaborar com os setores de recebimento e expedição para atender às necessidades dos clientes.',
+      location: "Jundiaí, SP"
     },
     {
       id: '003',
-      company: 'CYBER SOLUTIONS LTDA',
-      position: 'JUNIOR DEVELOPER',
-      period: '2019 - 2020',
-      implants: ['JavaScript', 'HTML5', 'CSS3', 'MySQL'],
-      description: 'Início da jornada no desenvolvimento web. Participação em projetos de pequeno e médio porte, aprendizado das bases da programação.',
-      reputation: 72
+      company: 'CD BOA SUPERMERCADO',
+      position: 'ESTÁGIARIO EM TECNOLOGIA DA INFORMAÇÃO',
+      period: 'OUT 2022 - JAN 2023',
+      implants: ['Linux', 'Shell Script', 'Redes', ''],
+      description: 'Manutenção de redes, hardware e sistemas POS, suporte técnico ao ERP Protheus e Linux, bem como identificação e resolução de falhas nos sistemas.',
+      location: "Jundiaí, SP"
     }
   ];
 
@@ -55,7 +55,7 @@ const Experience = () => {
             EXPERIÊNCIA
           </h2>
           <p className="text-neon-blue font-mono text-sm sm:text-lg">
-            HISTÓRICO_DE_MODIFICAÇÕES // ÁRVORE_DE_HABILIDADES.DAT
+            HISTÓRICO.DAT // ÁRVORE_DE_HABILIDADES.EXP
           </p>
         </div>
 
@@ -93,20 +93,12 @@ const Experience = () => {
                   {exp.position}
                 </div>
 
-                {/* Reputation Bar */}
-                <div className="mb-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-neon-blue text-xs sm:text-sm">REPUTAÇÃO:</span>
-                    <span className={`font-mono text-xs sm:text-sm ${getReputationColor(exp.reputation)}`}>
-                      {exp.reputation}%
+                {/* Localização */}
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="text-neon-blue text-xs sm:text-sm">Localização:</span>
+                    <span className="font-mono text-xs sm:text-sm text-neon-green">
+                    {exp.location}
                     </span>
-                  </div>
-                  <div className="w-full bg-cyber-gray h-1.5 sm:h-2 rounded">
-                    <div 
-                      className={`h-1.5 sm:h-2 rounded transition-all duration-1000 ${getReputationColor(exp.reputation)} bg-current`}
-                      style={{ width: `${exp.reputation}%` }}
-                    ></div>
-                  </div>
                 </div>
 
                 {/* Description */}
@@ -141,15 +133,15 @@ const Experience = () => {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-neon-pink">3+</div>
+              <div className="text-xl sm:text-2xl font-bold text-neon-pink">2+</div>
               <div className="text-xs text-neon-blue font-mono">ANOS_EXP</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-neon-green">50+</div>
+              <div className="text-xl sm:text-2xl font-bold text-neon-green">3+</div>
               <div className="text-xs text-neon-blue font-mono">PROJETOS</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold text-neon-orange">15+</div>
+              <div className="text-xl sm:text-2xl font-bold text-neon-orange">10+</div>
               <div className="text-xs text-neon-blue font-mono">TECNOLOGIAS</div>
             </div>
             <div>

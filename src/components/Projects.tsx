@@ -19,18 +19,18 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: '001',
-      name: 'E-Commerce Cyberpunk',
-      codename: 'PROJETO_MATRIX',
-      description: 'Plataforma de e-commerce futurista com interface cyberpunk, carrinho inteligente e sistema de pagamentos criptografados.',
-      technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe'],
+      name: 'Pixel Flow',
+      codename: 'AGENCIA_DE_DESENVOLVIMENTO',
+      description: 'A Pixel Flow é uma agência de desenvolvimento web que cria soluções digitais incríveis e personalizadas. Nosso repositório contém projetos, modelos e ferramentas para criar sites modernos, responsivos e otimizados, com foco em design e desempenho. Junte-se a nós para transformar suas ideias em experiências online únicas!',
+      technologies: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'],
       status: 'COMPLETA',
       threat_level: 3,
-      demo_link: '#',
-      repo_link: '#'
+      demo_link: 'https://pixel-flow-agency.vercel.app/',
+      repo_link: 'https://github.com/lucasmarujo/pixel-flow'
     },
     {
       id: '002',
-      name: 'Dashboard Analytics',
+      name: 'Task Manager',
       codename: 'NEURAL_NET',
       description: 'Dashboard de analytics em tempo real com visualizações interativas e predições baseadas em IA.',
       technologies: ['Vue.js', 'D3.js', 'Python', 'TensorFlow', 'MongoDB'],
@@ -145,14 +145,14 @@ const Projects = () => {
                   
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     {project.demo_link && (
-                      <button className="bg-neon-green/20 text-neon-green px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-green/30 transition-all text-center">
+                      <a href={project.demo_link} target="_blank" rel="noopener noreferrer" className="bg-neon-green/20 text-neon-green px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-green/30 transition-all text-center">
                         DEMO
-                      </button>
+                      </a>
                     )}
                     {project.repo_link && (
-                      <button className="bg-neon-orange/20 text-neon-orange px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-orange/30 transition-all text-center">
+                      <a href={project.repo_link} target="_blank" rel="noopener noreferrer" className="bg-neon-orange/20 text-neon-orange px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-orange/30 transition-all text-center">
                         CÓDIGO
-                      </button>
+                      </a>
                     )}
                   </div>
                 </div>
