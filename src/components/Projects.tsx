@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 interface Project {
@@ -8,7 +7,7 @@ interface Project {
   description: string;
   technologies: string[];
   status: 'COMPLETA' | 'EM_ANDAMENTO' | 'CLASSIFICADA';
-  threat_level: number;
+  threat_level: 'BAIXA' | 'MÉDIA' | 'ALTA' | 'CRÍTICA';
   demo_link?: string;
   repo_link?: string;
 }
@@ -24,7 +23,7 @@ const Projects = () => {
       description: 'A Pixel Flow é uma agência de desenvolvimento web que cria soluções digitais incríveis e personalizadas. Nosso repositório contém projetos, modelos e ferramentas para criar sites modernos, responsivos e otimizados, com foco em design e desempenho. Junte-se a nós para transformar suas ideias em experiências online únicas!',
       technologies: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'],
       status: 'COMPLETA',
-      threat_level: 3,
+      threat_level: 'MÉDIA',
       demo_link: 'https://pixel-flow-agency.vercel.app/',
       repo_link: 'https://github.com/lucasmarujo/pixel-flow'
     },
@@ -35,27 +34,31 @@ const Projects = () => {
       description: 'Dashboard de analytics em tempo real com visualizações interativas e predições baseadas em IA.',
       technologies: ['Vue.js', 'D3.js', 'Python', 'TensorFlow', 'MongoDB'],
       status: 'COMPLETA',
-      threat_level: 4,
+      threat_level: 'ALTA',
       demo_link: '#',
       repo_link: '#'
     },
     {
       id: '003',
-      name: 'App Mobile Social',
+      name: 'Portfolio V1',
       codename: 'GHOST_PROTOCOL',
-      description: 'Aplicativo social com recursos de AR e sistema de matchmaking baseado em localização.',
-      technologies: ['React Native', 'Firebase', 'ARCore', 'GraphQL'],
-      status: 'EM_ANDAMENTO',
-      threat_level: 5,
-      demo_link: '#'
+      description: 'Um portfólio de desenvolvedor básico e responsivo no idioma inglês. Utilizando tecnologias recentes que fazem parte do meu dia a dia.',
+      technologies: ['React', 'Typescript', 'Node.js', 'Tailwind CSS'],
+      status: 'COMPLETA',
+      threat_level: 'BAIXA',
+      demo_link: 'https://lucasmarujo.github.io/portfolio-final/',
+      repo_link: 'https://github.com/lucasmarujo/portfolio-final',
     }
   ];
 
-  const getThreatColor = (level: number) => {
-    if (level <= 2) return 'text-neon-green';
-    if (level <= 3) return 'text-neon-yellow';
-    if (level <= 4) return 'text-neon-orange';
-    return 'text-neon-pink';
+  const getThreatColor = (level: Project['threat_level']) => {
+    switch (level) {
+      case 'BAIXA': return 'text-neon-green';
+      case 'MÉDIA': return 'text-neon-yellow';
+      case 'ALTA': return 'text-neon-orange';
+      case 'CRÍTICA': return 'text-neon-pink';
+      default: return 'text-neon-blue';
+    }
   };
 
   const getStatusColor = (status: string) => {
@@ -107,15 +110,28 @@ const Projects = () => {
               {/* Threat Level */}
               <div className="flex items-center space-x-2 mb-3 sm:mb-4">
                 <span className="text-neon-blue text-xs sm:text-sm">COMPLEXIDADE:</span>
+                <span className={`font-bold text-xs sm:text-sm ${getThreatColor(project.threat_level)}`}>
+                  {project.threat_level}
+                </span>
                 <div className="flex space-x-1">
                   {[...Array(5)].map((_, i) => (
                     <div
                       key={i}
                       className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${
-                        i < project.threat_level
+                        i < (
+                          project.threat_level === 'BAIXA' ? 1 :
+                          project.threat_level === 'MÉDIA' ? 2 :
+                          project.threat_level === 'ALTA' ? 3 :
+                          project.threat_level === 'CRÍTICA' ? 5 : 0
+                        )
                           ? getThreatColor(project.threat_level)
                           : 'bg-cyber-gray'
-                      } ${i < project.threat_level ? 'animate-pulse' : ''}`}
+                      } ${i < (
+                        project.threat_level === 'BAIXA' ? 1 :
+                        project.threat_level === 'MÉDIA' ? 2 :
+                        project.threat_level === 'ALTA' ? 3 :
+                        project.threat_level === 'CRÍTICA' ? 5 : 0
+                      ) ? 'animate-pulse' : ''}`}
                     ></div>
                   ))}
                 </div>

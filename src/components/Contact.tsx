@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
+emailjs.init('-lZl33DFNQYgKHTEA');
+
 const Contact = () => {
   const [isTransmitting, setIsTransmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,24 +16,27 @@ const Contact = () => {
     e.preventDefault();
     setIsTransmitting(true);
 
+    console.log('Enviando:', formData);
+
     emailjs.send(
       'service_f321mo7',
       'template_f7iskbn',
       {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-      },
-      'QCqx1sA8ZLfQbymG01Pi1'
+        user_name: formData.name,
+        user_email: formData.email,
+        user_message: formData.message,
+      }
     )
     .then(() => {
       setIsTransmitting(false);
       setFormData({ name: '', email: '', message: '' });
-      alert('Mensagem enviada com sucesso!');
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
     })
-    .catch(() => {
+    .catch((error) => {
       setIsTransmitting(false);
       alert('Erro ao enviar mensagem. Tente novamente.');
+      console.error(error);
     });
   };
 
@@ -44,7 +50,7 @@ const Contact = () => {
   const socialLinks = [
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/lucas-marujo-amadeu-5322a7219/', signal: '██████████' },
     { name: 'GitHub', url: 'https://github.com/lucasmarujo', signal: '████████░░' },
-    { name: 'Email', url: '#', signal: '██████░░░░' }
+    { name: 'Email', url: 'mailto:lucas.marujo.dev@gmail.com', signal: '██████░░░░' }
   ];
 
   return (
@@ -120,14 +126,21 @@ const Contact = () => {
 
               <button
                 type="submit"
-                disabled={isTransmitting}
-                className={`w-full py-3 sm:py-4 rounded font-mono text-xs sm:text-sm transition-all duration-300 ${
-                  isTransmitting
+                disabled={isTransmitting || success}
+                className={`w-full py-3 sm:py-4 rounded font-mono text-xs sm:text-sm transition-all duration-300
+                  ${isTransmitting
                     ? 'bg-neon-orange/20 text-neon-orange border border-neon-orange animate-pulse'
-                    : 'bg-neon-pink/20 text-neon-pink border border-neon-pink hover:bg-neon-pink/30 animate-glow'
-                }`}
+                    : success
+                      ? 'bg-neon-green/80 text-white border border-neon-green'
+                      : 'bg-neon-pink/20 text-neon-pink border border-neon-pink hover:bg-neon-pink/30 animate-glow'
+                  }`}
               >
-                {isTransmitting ? 'TRANSMITINDO...' : 'ENVIAR_TRANSMISSÃO'}
+                {isTransmitting
+                  ? 'TRANSMITINDO...'
+                  : success
+                    ? 'TRANSMISSÃO ENVIADA COM SUCESSO'
+                    : 'ENVIAR_TRANSMISSÃO'
+                }
               </button>
             </form>
 

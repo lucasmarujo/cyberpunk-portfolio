@@ -34,8 +34,8 @@ const Experience = () => {
       company: 'CD BOA SUPERMERCADO',
       position: 'ESTÁGIARIO EM TECNOLOGIA DA INFORMAÇÃO',
       period: 'OUT 2022 - JAN 2023',
-      implants: ['Linux', 'Shell Script', 'Redes', ''],
-      description: 'Manutenção de redes, hardware e sistemas POS, suporte técnico ao ERP Protheus e Linux, bem como identificação e resolução de falhas nos sistemas.',
+      implants: ['Linux', 'Shell Script', 'Redes', 'PDV'],
+      description: 'Manutenção de redes, hardware e sistemas POS(PDV), suporte técnico ao ERP Protheus e Linux, bem como identificação e resolução de falhas nos sistemas.',
       location: "Jundiaí, SP"
     }
   ];
@@ -108,7 +108,7 @@ const Experience = () => {
 
                 {/* Implants/Technologies */}
                 <div>
-                  <div className="text-neon-blue text-xs sm:text-sm mb-2">IMPLANTES ADQUIRIDOS:</div>
+                  <div className="text-neon-blue text-xs sm:text-sm mb-2">HABILIDADES ADQUIRIDAS:</div>
                   <div className="flex flex-wrap gap-1 sm:gap-2">
                     {exp.implants.map((implant, i) => (
                       <span
