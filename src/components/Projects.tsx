@@ -29,14 +29,14 @@ const Projects = () => {
     },
     {
       id: '002',
-      name: 'Task Manager',
+      name: 'AI Web chatbot',
       codename: 'NEURAL_NET',
-      description: 'Dashboard de analytics em tempo real com visualizações interativas e predições baseadas em IA.',
-      technologies: ['Vue.js', 'D3.js', 'Python', 'TensorFlow', 'MongoDB'],
+      description: 'Um chatbot web que utiliza IA para responder perguntas e fornecer informações. Desenvolvido com principio serverless, e com responsividade para mobile e desktop com foco em UX|UI.',
+      technologies: ['React', 'Typescript', 'Node.js', 'Tailwind CSS'],
       status: 'COMPLETA',
-      threat_level: 'ALTA',
-      demo_link: '#',
-      repo_link: '#'
+      threat_level: 'BAIXA',
+      demo_link: 'https://ai-chatbot-web-lemon.vercel.app/',
+      repo_link: 'https://github.com/lucasmarujo/ai-chatbot-web'
     },
     {
       id: '003',
