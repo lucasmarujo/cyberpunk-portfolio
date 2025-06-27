@@ -18,9 +18,10 @@ const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
 
   const navItems = [
     { id: 'home', label: 'TERMINAL', icon: '◉' },
-    { id: 'projects', label: 'PROJETOS', icon: '◈' },
-    { id: 'experience', label: 'EXPERIÊNCIA', icon: '◇' },
-    { id: 'contact', label: 'ENTRE EM CONTATO', icon: '◆' },
+    { id: 'projects', label: 'PROJETOS', icon: '⌨' },
+    { id: 'experience', label: 'EXPERIÊNCIA', icon: '⚐' },
+    { id: 'contact', label: 'ENTRE EM CONTATO', icon: '✉' },
+    { id: 'certified', label: 'CERTIFICADOS', icon: '❏' },
   ];
 
   const handleSectionChange = (section: string) => {

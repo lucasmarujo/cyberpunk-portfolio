@@ -69,8 +69,7 @@ const Experience = () => {
               className="relative mb-8 sm:mb-12 sm:ml-16 md:ml-20 group"
             >
               {/* Timeline Node - Hidden on mobile */}
-              <div className="hidden sm:block absolute -left-20 md:-left-16 top-6 w-6 h-6 md:w-8 md:h-8 bg-cyber-dark border-2 border-neon-blue rounded-full flex items-center justify-center group-hover:border-neon-pink transition-all duration-300">
-                <div className="w-2 h-2 md:w-3 md:h-3 bg-neon-blue rounded-full animate-pulse group-hover:bg-neon-pink"></div>
+              <div className="hidden sm:block absolute -left-20 md:-left-16 top-6 w-6 h-6 md:w-8 md:h-8 bg-cyber-dark border-2 border-neon-blue rounded-full flex items-center justify-center group-hover:border-neon-pink transition-all duration-300">                <div className="w-2 h-2 md:w-3 md:h-3 bg-neon-blue rounded-full animate-pulse group-hover:bg-neon-pink"></div>
               </div>
 
               {/* Experience Card */}

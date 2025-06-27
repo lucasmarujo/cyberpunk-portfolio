@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import aiChatbot from '../lib/img/ia-chatbot.png';
+import pixelFlow from '../lib/img/pixel-flow.png';
+import portfolioV1 from '../lib/img/portfolio.png';
 
 interface Project {
   id: string;
@@ -10,6 +15,7 @@ interface Project {
   threat_level: 'BAIXA' | 'MÉDIA' | 'ALTA' | 'CRÍTICA';
   demo_link?: string;
   repo_link?: string;
+  image: string;
 }
 
 const Projects = () => {
@@ -25,7 +31,8 @@ const Projects = () => {
       status: 'COMPLETA',
       threat_level: 'MÉDIA',
       demo_link: 'https://pixel-flow-agency.vercel.app/',
-      repo_link: 'https://github.com/lucasmarujo/pixel-flow'
+      repo_link: 'https://github.com/lucasmarujo/pixel-flow',
+      image: pixelFlow
     },
     {
       id: '002',
@@ -36,7 +43,8 @@ const Projects = () => {
       status: 'COMPLETA',
       threat_level: 'BAIXA',
       demo_link: 'https://ai-chatbot-web-lemon.vercel.app/',
-      repo_link: 'https://github.com/lucasmarujo/ai-chatbot-web'
+      repo_link: 'https://github.com/lucasmarujo/ai-chatbot-web',
+      image: aiChatbot
     },
     {
       id: '003',
@@ -48,6 +56,7 @@ const Projects = () => {
       threat_level: 'BAIXA',
       demo_link: 'https://lucasmarujo.github.io/portfolio-final/',
       repo_link: 'https://github.com/lucasmarujo/portfolio-final',
+      image: portfolioV1
     }
   ];
 
@@ -84,11 +93,23 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((project) => (
-            <div
+            <motion.div
               key={project.id}
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
               className="bg-cyber-gray/50 rounded-lg neon-border p-4 sm:p-6 hover:bg-cyber-gray/70 transition-all duration-300 cursor-pointer group backdrop-blur-sm"
               onClick={() => setSelectedProject(selectedProject === project.id ? null : project.id)}
             >
+              {/* Imagem do Projeto */}
+              <img
+                src={project.image}
+                alt={project.name}
+                className="w-full h-32 sm:h-40 object-cover rounded mb-3 sm:mb-4 pointer-events-none"
+              />
+
               {/* Project Header */}
               <div className="flex items-center justify-between mb-3 sm:mb-4">
                 <div className="text-neon-blue font-mono text-xs sm:text-sm">
@@ -153,26 +174,35 @@ const Projects = () => {
               </div>
 
               {/* Expanded Content */}
-              {selectedProject === project.id && (
-                <div className="border-t border-neon-blue/30 pt-4 mt-4 animate-fade-in">
-                  <p className="text-gray-300 text-xs sm:text-sm mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                    {project.demo_link && (
-                      <a href={project.demo_link} target="_blank" rel="noopener noreferrer" className="bg-neon-green/20 text-neon-green px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-green/30 transition-all text-center">
-                        DEMO
-                      </a>
-                    )}
-                    {project.repo_link && (
-                      <a href={project.repo_link} target="_blank" rel="noopener noreferrer" className="bg-neon-orange/20 text-neon-orange px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-orange/30 transition-all text-center">
-                        CÓDIGO
-                      </a>
-                    )}
-                  </div>
-                </div>
-              )}
+              <AnimatePresence>
+                {selectedProject === project.id && (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="border-t border-neon-blue/30 pt-4 mt-4"
+                  >
+                    <p className="text-gray-300 text-xs sm:text-sm mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                      {project.demo_link && (
+                        <a href={project.demo_link} target="_blank" rel="noopener noreferrer" className="bg-neon-green/20 text-neon-green px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-green/30 transition-all text-center">
+                          DEMO
+                        </a>
+                      )}
+                      {project.repo_link && (
+                        <a href={project.repo_link} target="_blank" rel="noopener noreferrer" className="bg-neon-orange/20 text-neon-orange px-3 py-2 rounded text-xs font-mono neon-border hover:bg-neon-orange/30 transition-all text-center">
+                          CÓDIGO
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Expand Indicator */}
               <div className="flex justify-center mt-4">
@@ -180,7 +210,7 @@ const Projects = () => {
                   selectedProject === project.id ? 'border-t-4 border-t-neon-pink rotate-180' : 'border-b-4 border-b-neon-blue'
                 }`}></div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
