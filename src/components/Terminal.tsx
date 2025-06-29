@@ -84,15 +84,15 @@ const Terminal = () => {
           </div>
         </div>
 
-        <div className="font-fira text-xs sm:text-sm min-h-64 sm:min-h-80 md:min-h-96 whitespace-pre">
+        <div className="font-fira text-xs sm:text-sm min-h-64 sm:min-h-80 md:min-h-96 whitespace-pre leading-none">
           {terminalLines.slice(0, currentLine).map((line, index) => (
-            <div key={index} className="text-neon-blue">
+            <div key={index} className="text-neon-blue leading-none m-0 p-0">
               {line}
             </div>
           ))}
           
           {currentLine < terminalLines.length && (
-            <div className="text-neon-blue">
+            <div className="text-neon-blue leading-none m-0 p-0">
               {terminalLines[currentLine].slice(0, currentChar)}
               {showCursor && <span className="animate-blink">▊</span>}
             </div>
