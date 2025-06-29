@@ -37,7 +37,7 @@ const Projects = () => {
     {
       id: '002',
       name: 'AI Web chatbot',
-      codename: 'NEURAL_NET',
+      codename: 'AI WEB CHATBOT WITH GITHUB MODELS API',
       description: 'Um chatbot web que utiliza IA para responder perguntas e fornecer informações. Desenvolvido com principio serverless, e com responsividade para mobile e desktop com foco em UX|UI.',
       technologies: ['React', 'Typescript', 'Node.js', 'Tailwind CSS'],
       status: 'COMPLETA',
@@ -49,7 +49,7 @@ const Projects = () => {
     {
       id: '003',
       name: 'Portfolio V1',
-      codename: 'GHOST_PROTOCOL',
+      codename: 'PORTFOLIO_V1',
       description: 'Um portfólio de desenvolvedor básico e responsivo no idioma inglês. Utilizando tecnologias recentes que fazem parte do meu dia a dia.',
       technologies: ['React', 'Typescript', 'Node.js', 'Tailwind CSS'],
       status: 'COMPLETA',
