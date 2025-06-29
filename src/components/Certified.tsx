@@ -1,6 +1,24 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import ilac from '../lib/certified/ilac.jpg';
+
+//Alura
+import alurareactjs from '../lib/certified/reactjs.pdf';
+import alurajsbackend from '../lib/certified/jsbackend.pdf';
+import alurahtmlcss from '../lib/certified/htmlcss.pdf';
+import alurafrontend from '../lib/certified/frontend.pdf';
+import aluraengenharia from '../lib/certified/eds.pdf';
+import aluraphp from '../lib/certified/php.pdf';
+import aluragestti from '../lib/certified/gestti.pdf';
+import aluraseo from '../lib/certified/seo.pdf';
+import alurabusiness from '../lib/certified/business.pdf';
+
+//Udemy
+import udemyredes from '../lib/certified/redes.pdf';
+import udemypowerbi from '../lib/certified/powerbi.pdf';
+import udemywin22 from '../lib/certified/win22.pdf';
+
 interface Certificate {
   id: string;
   name: string;
@@ -24,24 +42,31 @@ const Certified = () => {
       id: 'cat01',
       school: 'Alura',
       certificates: [
-        { id: 'alura01', name: 'Formação React', image: placeholder },
-        { id: 'alura02', name: 'Formação Node.js', image: placeholder }
+        { id: 'alura01', name: 'Formação React', image: alurareactjs },
+        { id: 'alura02', name: 'Javascript para back-end', image: alurajsbackend },
+        { id: 'alura03', name: 'HTML & CSS', image: alurahtmlcss },
+        { id: 'alura05', name: 'Front-End', image: alurafrontend },
+        { id: 'alura04', name: 'Engenharia de Software', image: aluraengenharia },
+        { id: 'alura06', name: 'Formação PHP', image: aluraphp },
+        { id: 'alura07', name: 'Gestão de infraestrutura de TI', image: aluragestti },
+        { id: 'alura08', name: 'SEO', image: aluraseo },
+        { id: 'alura09', name: 'Business Agility', image: alurabusiness }
       ]
     },
     {
       id: 'cat02',
-      school: 'Rocketseat',
+      school: 'Udemy',
       certificates: [
-        { id: 'rock01', name: 'Ignite React', image: placeholder },
-        { id: 'rock02', name: 'NLW Return', image: placeholder }
+        { id: 'udemy01', name: 'Redes de Computadores', image: udemyredes },
+        { id: 'udemy02', name: 'Power BI', image: udemypowerbi },
+        { id: 'udemy03', name: 'Windows Server 2022', image: udemywin22 }
       ]
     },
     {
       id: 'cat03',
-      school: 'Coursera',
+      school: 'ILAC',
       certificates: [
-        { id: 'cour01', name: 'Google IT Support', image: placeholder },
-        { id: 'cour02', name: 'Meta Front-End', image: placeholder }
+        { id: 'cour01', name: 'Cambridge Pro Efficiency English C2', image: ilac }
       ]
     }
   ];
@@ -74,7 +99,7 @@ const Certified = () => {
           {/* -------- COLUNA ESQUERDA: CATEGORIAS -------- */}
           <div>
             <h3 className="text-neon-blue mb-3 font-mono text-xs sm:text-sm">
-              ESCOLAS / CATEGORIAS
+              ESCOLAS
             </h3>
             <motion.ul layout className="space-y-3">
               {categories.map(category => (
@@ -141,16 +166,34 @@ const Certified = () => {
           <div className="flex items-start justify-center md:col-span-1">
             <AnimatePresence mode="wait">
               {currentCert ? (
-                <motion.img
-                  key={currentCert.id}
-                  src={currentCert.image}
-                  alt={currentCert.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="max-w-full max-h-[60vh] object-contain rounded neon-border"
-                />
+                // Verifica se é PDF
+                currentCert.image.endsWith('.pdf') ? (
+                  <motion.div
+                    key={currentCert.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-full max-w-full max-h-[60vh] rounded neon-border flex justify-center items-center bg-cyber-gray/80"
+                  >
+                    <iframe
+                      src={currentCert.image}
+                      title={currentCert.name}
+                      className="w-full h-[60vh] rounded"
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.img
+                    key={currentCert.id}
+                    src={currentCert.image}
+                    alt={currentCert.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="max-w-full max-h-[60vh] object-contain rounded neon-border"
+                  />
+                )
               ) : (
                 <motion.div
                   key="placeholder"
